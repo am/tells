@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tell.name
+%p
+  %b Message:
+  = @tell.message
+%p
+  %b Published:
+  = @tell.published
+
+= link_to 'Edit', edit_tell_path(@tell)
+\|
+= link_to 'Back', tells_path

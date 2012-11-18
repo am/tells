@@ -1,0 +1,12 @@
+%h1 the tell
+
+%table
+  - @tells.each do |tell|
+    %tr
+      %td= tell.published
+      %td= tell.message
+      %td= link_to 'show', tell
+      %td= link_to 'edit', edit_tell_path(tell)
+      %td= link_to 'destroy', tell, method: :delete, data: { confirm: 'are you sure?' }
+
+= link_to 'write', new_tell_path
