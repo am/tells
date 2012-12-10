@@ -10,3 +10,12 @@
       %td= link_to 'destroy', tell, method: :delete, data: { confirm: 'are you sure?' }
 
 = link_to 'write', new_tell_path
+
+#tells
+
+:javascript
+  $(function(){
+    ComplexresponseTells.init({
+      tells: #{@tells.to_json.html_safe}
+    });
+  });

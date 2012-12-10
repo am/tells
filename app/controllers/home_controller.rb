@@ -9,4 +9,13 @@ class HomeController < ApplicationController
       format.json { render json: @tells }
     end
   end
+
+  # GET /last.json
+  def last
+    @tell = Tell.last
+
+    respond_to do |format|
+      format.json { render json: @tell.message.split(/ /).last }
+    end
+  end
 end

@@ -6,3 +6,12 @@
     %li
       = tell.published
       %b= tell.message
+
+#tells
+
+:javascript
+  $(function(){
+    ComplexresponseTells.init({
+      tells: #{@tells.to_json.html_safe}
+    });
+  });
