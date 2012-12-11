@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     @tell = Tell.last
 
     respond_to do |format|
-      format.json { render json: @tell.message.split(/ /).last }
+      format.json { render json: {word: @tell.message.split(/ /).last} }
     end
   end
 end

@@ -15,7 +15,7 @@ class ComplexresponseTells.Routers.TellsRouter extends Backbone.Router
     $("#tells").html(@view.render().el)
 
   index: ->
-    @view = new ComplexresponseTells.Views.Tells.IndexView(tells: @tells)
+    @view = new ComplexresponseTells.Views.HomeView(tells: @tells)
     $("#tells").html(@view.render().el)
 
   show: (id) ->

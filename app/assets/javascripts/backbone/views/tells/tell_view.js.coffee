@@ -15,5 +15,6 @@ class ComplexresponseTells.Views.Tells.TellView extends Backbone.View
     return false
 
   render: ->
+    console.log @model.toJSON()
     $(@el).html(@template(@model.toJSON() ))
     return this
