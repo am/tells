@@ -1,0 +1,10 @@
+%table#tells-table
+  %tr
+    %th
+    %th
+    %th
+%br
+
+#lastWord
+
+%a{ :href => "#/new" } New Tell

@@ -3,20 +3,29 @@ class ComplexresponseTells.Routers.TellsRouter extends Backbone.Router
     @tells = new ComplexresponseTells.Collections.TellsCollection()
     @tells.reset options.tells
 
+    console.log '@tells', @tells.toJSON()
+    console.log 'options.tells', options.tells
+
   routes:
     "new"      : "newTell"
     "index"    : "index"
+    "all"      : "all"
     ":id/edit" : "edit"
     ":id"      : "show"
     ".*"        : "index"
 
   newTell: ->
     @view = new ComplexresponseTells.Views.Tells.NewView(collection: @tells)
-    $("#tells").html(@view.render().el)
+    $("body").html(@view.render().el)
 
   index: ->
-    @view = new ComplexresponseTells.Views.HomeView(tells: @tells)
-    $("#tells").html(@view.render().el)
+    @view = new ComplexresponseTells.Views.HomeView(collection: @tells)
+    $("#write").html(@view.render().el)
+
+  all: ->
+    @view = new ComplexresponseTells.Views.AllView(tells: @tells)
+    $("#read").html(@view.render().el)
+    @tells.reset @tells.toJSON()
 
   show: (id) ->
     tell = @tells.get(id)

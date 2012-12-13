@@ -1,13 +1,6 @@
-%h1 complexresponse
+%h2#lastWord
+%form#new-tell{:name => "new-tell"}
+  %input#message{ :type => "text", :name => "message" }
+  %button{ :type => "submit", :value => "Create Tell" } tell
 
-%table#tells-table
-  %tr
-    %th
-    %th
-    %th
-
-%br
-
-#lastWord
-
-%a{ :href => "#/new" } New Tell
+%a#read{ :href => "#/all"} read

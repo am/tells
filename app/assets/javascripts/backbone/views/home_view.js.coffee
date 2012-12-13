@@ -3,23 +3,46 @@ ComplexresponseTells.Views ||= {}
 class ComplexresponseTells.Views.HomeView extends Backbone.View
   template: JST["backbone/templates/home"]
 
+  events:
+    "submit #new-tell": "save",
+    "click #read": "list"
+
+  constructor: (options) ->
+    super(options)
+    @model = new @collection.model()
+
+    @model.bind("change:errors", () =>
+      this.render()
+    )
+
   initialize: () ->
-    @options.tells.bind('reset', @addAll)
+    $(@el).attr('id', 'HomeView')
 
-  addAll: () =>
-    @options.tells.each(@addOne)
+  save: (e) ->
+    e.preventDefault()
+    e.stopPropagation()
 
-  addOne: (tell) =>
-    view = new ComplexresponseTells.Views.Tells.TellView({model : tell})
-    @$("tbody").append(view.render().el)
+    @model.unset("errors")
+
+    @collection.create(@model.toJSON(),
+      success: (tell) =>
+        @model = tell
+        window.location.hash = "/#{@model.id}"
+
+      error: (tell, jqXHR) =>
+        @model.set({errors: $.parseJSON(jqXHR.responseText)})
+    )
+
+  list: (e) ->
+    console.log e
+
 
   render: =>
-    $(@el).html(@template(tells: @options.tells.toJSON() ))
-    @addAll()
+    $(@el).html(@template(@model.toJSON() ))
 
+    this.$("form").backboneLink(@model)
 
     jQuery.get "/last.json", (data) =>
-      console.log data
       $('#lastWord').text(data.word)
 
     return this
