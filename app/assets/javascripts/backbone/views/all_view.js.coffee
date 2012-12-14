@@ -16,7 +16,7 @@ class ComplexresponseTells.Views.AllView extends Backbone.View
   addOne: (tell) =>
     console.log tell
     view = new ComplexresponseTells.Views.Tells.TellView({model : tell})
-    @$("tbody").append(view.render().el)
+    @$("ul").append(view.render().el)
 
   render: =>
     console.log @options.tells.toJSON()

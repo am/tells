@@ -10,8 +10,9 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'sqlite3'
+
 group :development do
-  gem 'sqlite3'
   gem 'haml-rails'
 end
 

@@ -1,10 +1,4 @@
-%table#tells-table
-  %tr
-    %th
-    %th
-    %th
-%br
+#tells-list
+  %ul
 
-#lastWord
-
-%a{ :href => "#/new" } New Tell
+%a#read{ :href => "#/"} write

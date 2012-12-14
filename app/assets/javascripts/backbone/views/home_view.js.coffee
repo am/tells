@@ -27,7 +27,7 @@ class ComplexresponseTells.Views.HomeView extends Backbone.View
     @collection.create(@model.toJSON(),
       success: (tell) =>
         @model = tell
-        window.location.hash = "/#{@model.id}"
+        window.location.hash = "/all"
 
       error: (tell, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
