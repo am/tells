@@ -1,5 +1,5 @@
 class Tell < ActiveRecord::Base
-  attr_accessible :message, :name, :published
+  attr_accessible :message
 
   validates :message, :presence => true,
                       :length => { :minimum => 10 }

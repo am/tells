@@ -15,7 +15,11 @@ class HomeController < ApplicationController
     @tell = Tell.last
 
     respond_to do |format|
-      format.json { render json: {word: @tell.message.split(/ /).last} }
+      if @tell.present?
+        format.json { render json: {word: @tell.message.split(/ /).last} }
+      else
+        format.json { render json: {word: "nil"} }
+      end
     end
   end
 end

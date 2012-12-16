@@ -12,7 +12,7 @@ end
 
 gem 'sqlite3', :group => [:development, :test]
 
-gem 'haml-rails', :group => [:development]
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
