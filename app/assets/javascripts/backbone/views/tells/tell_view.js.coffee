@@ -5,6 +5,8 @@ class ComplexresponseTells.Views.Tells.TellView extends Backbone.View
 
   events:
     "click .destroy" : "destroy"
+    "mouseover" : "onOver"
+    "mouseout" : "onOut"
 
   tagName: "li"
 
@@ -13,6 +15,12 @@ class ComplexresponseTells.Views.Tells.TellView extends Backbone.View
     this.remove()
 
     return false
+
+  onOver: () ->
+    $(@el).css('opacity', '.5')
+
+  onOut: () ->
+    $(@el).css('opacity', '1')
 
   render: ->
     console.log @model.toJSON()

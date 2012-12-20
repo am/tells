@@ -1,12 +1,12 @@
-%h1 bit ink
+.container
+  %h1 bit ink
+  #read
+  #write
 
-#read
-%h2#lastWord
-#write
-
-:javascript
-  $(function(){
-    ComplexresponseTells.init({
-      tells: #{@tells.to_json.html_safe}
+- content_for :end_scripts do
+  :javascript
+    $(function(){
+      ComplexresponseTells.init({
+        tells: #{@tells.to_json.html_safe}
+      });
     });
-  });
