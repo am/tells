@@ -3,7 +3,7 @@
   %form.navbar-form.pull-left#new-tell{ :name => "new-tell" }
     .input-prepend.input-append
       .add-on
-      %input.span6#message{ :type => "text", :name => "message" }
+      %textarea.span6#message{ :type => "text", :name => "message" }
       %button.btn.btn-inverse{ :type => "submit", :value => "Create Tell" } tell
       %button.btn.btn-inverse{ :type => "submit", :value => "Tweet Tell" } tweet
 
