@@ -5,6 +5,6 @@
       .add-on
       %textarea.span6#message{ :type => "text", :name => "message" }
       %button.btn.btn-inverse{ :type => "submit", :value => "Create Tell" } tell
-      %button.btn.btn-inverse{ :type => "submit", :value => "Tweet Tell" } tweet
 
-%a.btn#read{ :href => "#/all"} read
+#read-btn
+  %a{ :href => "#/all"} read

@@ -3,4 +3,5 @@
 #tells-list
   %ul.unstyled.inline
 
-%a.btn#read{ :href => "#/"} write
+#write-btn
+  %a{ :href => "#/"} write
