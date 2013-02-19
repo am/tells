@@ -1,10 +1,9 @@
 
 .navbar.clearfix
-  %form.navbar-form.pull-left#new-tell{ :name => "new-tell" }
-    .input-prepend.input-append
-      .add-on
-      %textarea.span6#message{ :type => "text", :name => "message" }
-      %button.btn.btn-inverse{ :type => "submit", :value => "Create Tell" } tell
+  %form#new-tell.group-inline.row-fluid{ :name => "new-tell" }
+    .tell-last-word.span2
+    %textarea#message.span7{ :type => "text", :name => "message" }
+    %button.span3{ :type => "submit", :value => "Create Tell" } tell
 
 #read-btn
   %a{ :href => "#/all"} read

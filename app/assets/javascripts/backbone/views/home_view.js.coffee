@@ -43,6 +43,6 @@ class ComplexresponseTells.Views.HomeView extends Backbone.View
     this.$("form").backboneLink(@model)
 
     jQuery.get "/last.json", (data) =>
-      $('.input-prepend .add-on').text(data.word)
+      $('.tell-last-word').text(data.word)
 
     return this

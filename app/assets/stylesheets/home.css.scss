@@ -6,6 +6,41 @@ h1 {
   color: dimgrey;
 }
 
+button, textarea {
+  margin: 0;
+}
+
+#new-tell {
+  height: 60px;
+  margin: 20px 0;
+  background-color: lightgray;
+}
+
+#new-tell>textarea {
+  height: 100%;
+  border: none;
+  color: dimgray;
+  background-color: whitesmoke;
+}
+
+#new-tell>textarea:focus {
+  border: 1px solid lightcoral;
+  outline: none;
+}
+
+#new-tell>button {
+  height: 100%;
+  border: none;
+  color: dimgray;
+  background-color: lightcoral;
+}
+
+.tell-last-word{
+  line-height: 60px;
+  text-align: right;
+  color: dimgray;
+}
+
 #tells-list {
   li, p {
     display: inline;
