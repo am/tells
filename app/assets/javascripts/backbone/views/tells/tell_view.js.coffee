@@ -17,12 +17,11 @@ class ComplexresponseTells.Views.Tells.TellView extends Backbone.View
     return false
 
   onOver: () ->
-    $(@el).css('opacity', '.5')
+    $('div', @el).css('display', 'initial')
 
   onOut: () ->
-    $(@el).css('opacity', '1')
+    $('div', @el).css('display', 'none')
 
   render: ->
-    console.log @model.toJSON()
-    $(@el).html(@template(@model.toJSON() ))
+    $(@el).html(@template(@model.toJSON()))
     return this

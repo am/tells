@@ -3,9 +3,6 @@ class ComplexresponseTells.Routers.TellsRouter extends Backbone.Router
     @tells = new ComplexresponseTells.Collections.TellsCollection()
     @tells.reset options.tells
 
-    console.log '@tells', @tells.toJSON()
-    console.log 'options.tells', options.tells
-
   routes:
     "new"      : "newTell"
     "index"    : "index"

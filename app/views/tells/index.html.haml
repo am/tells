@@ -3,7 +3,6 @@
 %table
   - @tells.each do |tell|
     %tr
-      %td= tell.published
       %td= tell.message
       %td= link_to 'show', tell
       %td= link_to 'edit', edit_tell_path(tell)
@@ -12,10 +11,3 @@
 = link_to 'write', new_tell_path
 
 #tells
-
-:javascript
-  $(function(){
-    ComplexresponseTells.init({
-      tells: #{@tells.to_json.html_safe}
-    });
-  });

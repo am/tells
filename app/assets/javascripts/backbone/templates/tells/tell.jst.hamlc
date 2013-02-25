@@ -1,1 +1,2 @@
-%p= @message
+%p
+%div= @created_at
