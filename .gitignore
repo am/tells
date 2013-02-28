@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+# bower
+/vendor/assets/javascripts/components/*
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -16,3 +19,5 @@
 
 # Ignore idea directory
 .idea
+
+*.DS_Store
