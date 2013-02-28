@@ -1,9 +1,11 @@
 
-.navbar.clearfix
-  %form#new-tell.group-inline.row-fluid{ :name => "new-tell" }
-    .tell-last-word.span2
-    %textarea#message.span7{ :type => "text", :name => "message" }
-    %button.span3{ :type => "submit", :value => "Create Tell" } tell
+.slider
+  .slide
+    .navbar.clearfix
+      %form#new-tell.group-inline.row-fluid{ :name => 'new-tell' }
+        .tell-last-word.span2
+        %textarea#message.span7{ :type => 'text', :name => 'message' }
+        %button.span3{ :type => 'submit', :value => 'Create Tell' } tell
 
-#read-btn
-  %a{ :href => "#/all"} read
+    #read-btn
+      %a{ :href => '#/all'} read

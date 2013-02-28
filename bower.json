@@ -1,0 +1,13 @@
+{
+   "lib": {
+    "dependencies": {      
+    }    
+  },
+  "vendor": {
+    "dependencies": {
+        "jquery.ui" : "1.10.1",
+        "modernizr" : "latest",
+        "iosSlider" : "git://github.com/iosscripts/iosSlider.git#~1.0.20"
+    }
+  }
+}

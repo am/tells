@@ -86,3 +86,29 @@ button, textarea {
 #read-btn>a, #write-btn>a {
   color: dimgray;
 }
+
+/* slider container */
+.iosSlider {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  width: 200px;
+  height: 400px;
+}
+
+/* slider */
+.iosSlider .slider {
+  /* required */
+  width: 400%;
+  height: 100%;
+}
+
+/* slide */
+.iosSlider .slider .slide {
+  float: left;
+
+  width: 400px;
+  height: 200px;
+}

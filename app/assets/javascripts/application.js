@@ -11,10 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //#= require hamlcoffee
-//= require vendor/modernizr-2.6.2-respond-1.1.0.min
-//= require vendor/jquery-1.9.1
-//= require vendor/jquery-ui-1.10.1.custom.min
+//= require jquery
 //= require underscore
+//= require components/iosSlider/_src/jquery.iosslider.min
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
