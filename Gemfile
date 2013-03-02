@@ -20,7 +20,6 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'bower-rails', '~> 0.2.1'
 gem 'rails-backbone'
 
 # To use ActiveModel has_secure_password

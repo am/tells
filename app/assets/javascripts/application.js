@@ -13,7 +13,8 @@
 //#= require hamlcoffee
 //= require jquery
 //= require underscore
-//= require components/iosSlider/_src/jquery.iosslider-vertical.min
+//= require jquery.iosslider-vertical.min
+//= require jquery.touchSwipe.min
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink

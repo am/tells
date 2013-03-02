@@ -38,21 +38,37 @@ class ComplexresponseTells.Views.HomeView extends Backbone.View
 
 
   render: =>
-    $(@el).html(@template(@model.toJSON() ))
 
-    this.$("form").backboneLink(@model)
-
-    jQuery.get "/last.json", (data) =>
-      $('.tell-last-word').text(data.word)
+#    $(@el).html(@template(@model.toJSON() ))
+#
+#    this.$("form").backboneLink(@model)
+#
+#    jQuery.get "/last.json", (data) =>
+#      $('.tell-last-word').text(data.word)
 
 
     p =
       snapToChildren: true
       scrollbar: false
       desktopClickDrag: true
+#      onSlideComplete: @someCallback
+      startAtSlide: 2
       
 
     console.log p
-    $('.iosSlider').iosSlider p
+    $('.slider').iosSlider p
+
+#    config =
+#      swipeStatus: (event, direction, distance, duration, fingerCount)->
+#        console.log event, direction, distance, duration, fingerCount
+#
+#    $('.slider').swipe(config)
+
+    document.ontouchmove = (e) ->
+      e.preventDefault()
 
     return this
+
+  someCallback: (args)->
+#    console.log args
+

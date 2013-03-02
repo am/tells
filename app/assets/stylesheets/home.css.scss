@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $left $top $blur $color;
+    -moz-box-shadow:inset $left $top $blur $color;
+    box-shadow:inset $left $top $blur $color;
+  } @else {
+    -webkit-box-shadow: $left $top $blur $color;
+    -moz-box-shadow: $left $top $blur $color;
+    box-shadow: $left $top $blur $color;
+  }
+}
+
 h1 {
   color: dimgrey;
 }
@@ -66,13 +78,6 @@ button, textarea {
   width: 100px;
   text-align: right;
   cursor: pointer;
-
-  //-webkit-touch-callout: none;
-  //-webkit-user-select: none;
-  //-khtml-user-select: none;
-  //-moz-user-select: none;
-  //-ms-user-select: none;
-  //user-select: none;
 }
 
 #read-btn, #write-btn {
@@ -87,27 +92,105 @@ button, textarea {
   color: dimgray;
 }
 
-/* slider container */
-.iosSlider {
+header {
+  position: absolute;
+  //padding-left: 20px;
+  padding-top: 20px;
+  width: 100%;
+  top: 5px;
+  height: 200px;
+  background:url('/assets/cartographer/cartographer.png');
+  .headerContents{
+    padding-left: 40px;
+
+    a {
+      color: darkgray;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: whitesmoke;
+    }
+    ul {
+      margin: 0;
+      list-style-type: none;
+      li {
+        display: inline-block;
+        margin-right: 40px;
+      }
+    }
+
+    h1, h2 {
+      margin: 0;
+      font-family: "nimbus-sans-condensed";
+      font-weight: 400;
+      //text-transform: uppercase;
+      color: darkgray;
+      font-size: 16px;
+      line-height: 1.5em;
+
+    }
+
+    h1 {
+      color: whitesmoke;
+    }
+
+  }
+
+}
+
+.border {
+  width: 100%;
+  height: 5px;
+  //margin-bottom: 1px;
+  background-color: rgb(210, 255, 237);
+}
+
+.slider {
   position: relative;
   top: 0;
   left: 0;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 400px;
+
+  .container {
+
+    width: 100%;
+    height: 100%;
+
+    .pane {
+      float: left;
+
+      width: 100%;
+      height: 100%;
+
+      .inner {
+        //border: 1px solid red;
+        width: 100%;
+        height: 400px;
+        padding-top: 4em;
+        @include box-shadow(-8px,0px,8px, black, false);
+
+        img {
+
+          margin: 0 auto;
+          display: block;
+        }
+
+      }
+      .solid {
+        background-color: white;
+      }
+    }
+  }
 }
 
-/* slider */
-.iosSlider .slider {
-  /* required */
-  width: 100%;
-  height: 100%;
-}
-
-/* slide */
-.iosSlider .slider .slide {
-  float: left;
-  background-color: gray;
-  width: 100%;
-  height: 300px;
+.touch {
+  .slider {
+    .inner {
+      img {
+        width: 50%;
+      }
+    }
+  }
 }
