@@ -19,4 +19,5 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/complexresponse_tells
-//= require_tree .
+
+// try not to import tree //= require_tree .
