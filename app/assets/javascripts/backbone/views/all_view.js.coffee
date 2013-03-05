@@ -15,7 +15,7 @@ class ComplexresponseTells.Views.AllView extends Backbone.View
     $(@el).attr('id', 'HomeView')
     @options.tells.bind('reset', @addAll)
 
-    $('.pulley').draggable()
+#    $('.pulley').draggable()
 
   addAll: () =>
     container = @$('#tells-list>ul')
@@ -84,5 +84,5 @@ class ComplexresponseTells.Views.AllView extends Backbone.View
 
   render: =>
     $(@el).html(@template(tells: @options.tells.toJSON()))
-#    $(@el).mousedown @startDrag
+    $(@el).mousedown @startDrag
     return this
