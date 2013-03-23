@@ -17,7 +17,7 @@ class ComplexresponseTells.Routers.TellsRouter extends Backbone.Router
 
   index: ->
     @view = new ComplexresponseTells.Views.HomeView(collection: @tells)
-    $("#write").html(@view.render().el)
+    $("#tells").html(@view.render().el)
 
   all: ->
     @view = new ComplexresponseTells.Views.AllView(tells: @tells)
