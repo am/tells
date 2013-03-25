@@ -2,6 +2,3 @@
 
 #tells-list
   %ul.unstyled.inline
-
-#write-btn
-  %a{ :href => "#/"} write

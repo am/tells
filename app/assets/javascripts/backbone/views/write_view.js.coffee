@@ -1,7 +1,7 @@
 ComplexresponseTells.Views ||= {}
 
-class ComplexresponseTells.Views.HomeView extends Backbone.View
-  template: JST["backbone/templates/home"]
+class ComplexresponseTells.Views.WriteView extends Backbone.View
+  template: JST["backbone/templates/write"]
 
   events:
     "submit #new-tell": "save",

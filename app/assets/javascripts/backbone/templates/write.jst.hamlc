@@ -4,6 +4,3 @@
   .tell-last-word
   %p#message{ :type => 'text', :name => 'message', :contenteditable => 'true'}
   %button.span3{ :type => 'submit', :value => 'Create Tell' } tell
-
-#read-btn
-  %a{ :href => '#/all'} read

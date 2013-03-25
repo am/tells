@@ -6,7 +6,6 @@ class ComplexresponseTells.Routers.TellsRouter extends Backbone.Router
   routes:
     "new"      : "newTell"
     "index"    : "index"
-    "all"      : "all"
     ":id/edit" : "edit"
     ":id"      : "show"
     ".*"        : "index"
@@ -17,18 +16,13 @@ class ComplexresponseTells.Routers.TellsRouter extends Backbone.Router
 
   index: ->
     # list all words
-    @view = new ComplexresponseTells.Views.AllView(tells: @tells)
+    @view = new ComplexresponseTells.Views.ReadView(tells: @tells)
     $("#read").html(@view.render().el)
     @tells.reset @tells.toJSON()
 
     # input
-    @view = new ComplexresponseTells.Views.HomeView(collection: @tells)
-    $("#tells").html(@view.render().el)
-
-  all: ->
-    @view = new ComplexresponseTells.Views.AllView(tells: @tells)
-    $("#read").html(@view.render().el)
-    @tells.reset @tells.toJSON()
+    @view = new ComplexresponseTells.Views.WriteView(collection: @tells)
+    $("#write").html(@view.render().el)
 
   show: (id) ->
     tell = @tells.get(id)

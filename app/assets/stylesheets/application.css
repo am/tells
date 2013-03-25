@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require 'bootstrap.min'
- *= require jquery-ui-1.10.1.custom.min
  *= require_self
  *= require_tree .
  */

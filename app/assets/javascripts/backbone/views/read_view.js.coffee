@@ -1,7 +1,7 @@
 ComplexresponseTells.Views ||= {}
 
-class ComplexresponseTells.Views.AllView extends Backbone.View
-  template: JST["backbone/templates/all"]
+class ComplexresponseTells.Views.ReadView extends Backbone.View
+  template: JST["backbone/templates/read"]
 
   lastDragX = 0
   messageCount = 0
