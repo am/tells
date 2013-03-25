@@ -16,6 +16,12 @@ class ComplexresponseTells.Routers.TellsRouter extends Backbone.Router
     $("body").html(@view.render().el)
 
   index: ->
+    # list all words
+    @view = new ComplexresponseTells.Views.AllView(tells: @tells)
+    $("#read").html(@view.render().el)
+    @tells.reset @tells.toJSON()
+
+    # input
     @view = new ComplexresponseTells.Views.HomeView(collection: @tells)
     $("#tells").html(@view.render().el)
 
