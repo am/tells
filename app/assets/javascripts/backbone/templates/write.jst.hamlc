@@ -1,6 +1,8 @@
 
 
-%form#new-tell.row-fluid{ :name => 'new-tell' }
-  .tell-last-word
-  %p#message{ :type => 'text', :name => 'message', :contenteditable => 'true'}
+.tell-last-word
+
+%form#new-tell{ :name => 'new-tell' }
+  .row-fluid
+    %input{ :type => 'text', :name => 'message'}
   %button.span3{ :type => 'submit', :value => 'Create Tell' } tell

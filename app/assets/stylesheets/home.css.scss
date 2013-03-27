@@ -25,6 +25,12 @@ body {
   background-color: lightgray;
 }
 
+body, p, div, input, button {
+  font-family: "nimbus-sans-condensed",sans-serif;
+  font-size: 30px;
+  line-height: 30px;
+}
+
 h1 {
   color: dimgrey;
 }
@@ -33,68 +39,67 @@ button, textarea {
   margin: 0;
 }
 
-#new-tell {
-  height: 60px;
-  margin: 20px 0;
+.tell-last-word {
+  text-align: center;
+  display: block;
+  color: dimgray;
+}
 
-  button {
-    height: 100%;
-    border: none;
-    color: dimgray;
-    width: 100%;
-    margin: 0;
+#write {
+  #HomeView {
+    padding: 0 10px;
+    form {
+      height: 60px;
+      margin: 20px 0;
+
+      input {
+        display: block;
+        width: 100%;
+        padding: 10px 8px 10px 8px;
+        margin: 10px -10px;
+        background-color: white;
+
+        @include radius(4px);
+      }
+
+      button {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: none;
+        color: dimgray;
+
+        @include radius(4px);
+
+        &:hover{
+          background-color: white;
+        }
+
+      }
+    }
   }
 }
 
-#message {
-  background-color: white;
-  font-size: 20px;
-  line-height: 40px;
 
-  @include radius(2px);
-}
-
-.tell-last-word{
-  display: inline;
-  //line-height: 60px;
-  //text-align: right;
-  color: dimgray;
-}
 
 #tells-list {
   li, p, div {
     display: inline;
     padding: 4px 0;
     margin: 0;
-    line-height: 24px;
     color: dimgray;
   }
   li:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    // background-color: rgba(255, 255, 255, 0.5);
   }
   div {
     display: none;
-    background-color: aliceblue;
   }
 }
 
 .pulley {
   color: lightcoral;
-  background-color: dimgrey;
   padding: 2px 10px;
-  width: 100px;
-  text-align: right;
+  width: 50%;
   cursor: pointer;
-}
-
-#read-btn, #write-btn {
-  display: inline-block;
-  color: dimgray;
-  background: lightgray;
-  padding: 4px;
-  border-radius: 2px;
-}
-
-#read-btn>a, #write-btn>a {
-  color: dimgray;
 }
