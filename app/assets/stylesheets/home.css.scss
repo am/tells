@@ -14,6 +14,17 @@
   }
 }
 
+@mixin radius($topleft, $topright: $topleft, $bottomright: $topleft, $bottomleft: $topleft) {
+
+    -moz-border-radius:     $topleft $topright $bottomright $bottomleft;
+    -webkit-border-radius:  $topleft $topright $bottomright $bottomleft;
+    border-radius:          $topleft $topright $bottomright $bottomleft;
+}
+
+body {
+  background-color: lightgray;
+}
+
 h1 {
   color: dimgrey;
 }
@@ -25,26 +36,22 @@ button, textarea {
 #new-tell {
   height: 60px;
   margin: 20px 0;
-  background-color: lightgray;
+
+  button {
+    height: 100%;
+    border: none;
+    color: dimgray;
+    width: 100%;
+    margin: 0;
+  }
 }
 
-#new-tell>textarea {
-  height: 100%;
-  border: none;
-  color: dimgray;
-  background-color: whitesmoke;
-}
+#message {
+  background-color: white;
+  font-size: 20px;
+  line-height: 40px;
 
-#new-tell>textarea:focus {
-  border: 1px solid lightcoral;
-  outline: none;
-}
-
-#new-tell>button {
-  height: 100%;
-  border: none;
-  color: dimgray;
-  background-color: lightcoral;
+  @include radius(2px);
 }
 
 .tell-last-word{
@@ -60,7 +67,6 @@ button, textarea {
     padding: 4px 0;
     margin: 0;
     line-height: 24px;
-    background-color: lightcoral;
     color: dimgray;
   }
   li:hover {
