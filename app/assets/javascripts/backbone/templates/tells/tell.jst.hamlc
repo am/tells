@@ -1,2 +1,2 @@
-%p
-%div= @created_at
+%p.told
+%div.info= @created_at
