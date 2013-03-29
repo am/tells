@@ -1,4 +1,4 @@
-.pulley.ui-widget-content.ui-draggable drag me >
+.pulley.ui-widget-content.ui-draggable ↧
 
 #tells-list
   %ul.unstyled.inline
