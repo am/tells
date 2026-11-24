@@ -137,5 +137,14 @@ body > .container {
   padding: 24px 16px;
   box-sizing: border-box;
 }
-#tells-list { text-align: center; }
+/* Justified so the story spans the same width as the input below it. */
+#tells-list { text-align: justify; text-align-last: center; hyphens: auto; }
 #write .home-view { padding: 0; }
+
+/* One even gap between the read button, the story, the form and any error. */
+body > .container { display: flex; flex-direction: column; gap: 24px; }
+#read, #write, #read .home-view, #write .home-view { display: contents; }
+.pulley, #tells-list, #tells-list ul, #write form, #write .tell-error { margin: 0; }
+#tells-list[hidden], .pulley[hidden], #write .tell-error:empty { display: none; }
+/* Cancel the story's half line-height so its gaps look the same as the others. */
+#tells-list { margin: -.3em 0; }

@@ -2,6 +2,7 @@
 // the story from it, then read the whole thing back.
 (() => {
   const list = document.querySelector("#tells-list > ul");
+  const story = document.getElementById("tells-list");
   const readButton = document.querySelector(".pulley");
   const form = document.getElementById("new-tell");
   const input = form.elements.message;
@@ -54,6 +55,7 @@
     readButton.textContent = open ? "hide" : "read";
     readButton.setAttribute("aria-expanded", String(open));
     readButton.hidden = hidden.length === 0;
+    story.hidden = allHidden();
   }
 
   // Pull the story out (or tuck it back in), a few characters per frame so
@@ -62,6 +64,7 @@
   function pull(direction) {
     if (pulling) cancelAnimationFrame(pulling);
     const done = direction > 0 ? allShown : allHidden;
+    if (direction > 0) story.hidden = false;
     const total = hidden.reduce((n, c) => n + c.length, 0) + visible.reduce((n, c) => n + c.length, 0);
     const perFrame = Math.max(1, Math.ceil(total / 60));
     const tick = () => {
