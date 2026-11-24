@@ -1,0 +1,110 @@
+/* Compiled by hand from the old app/assets/stylesheets (scaffolds + home). */
+
+/* scaffolds */
+body { background-color: #fff; color: #333; font-family: verdana, arial, helvetica, sans-serif; font-size: 13px; line-height: 18px; }
+p, ol, ul, td { font-family: verdana, arial, helvetica, sans-serif; font-size: 13px; line-height: 18px; }
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color: #000; }
+
+/* home */
+body { background-color: lightgray; }
+
+body, p, div, input, button {
+  font-family: "adelle", sans-serif;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+h1 { color: dimgrey; }
+button, textarea { margin: 0; }
+
+.tell-last-word {
+  text-align: center;
+  display: block;
+  color: dimgray;
+}
+
+#write .home-view { padding: 0 10px; }
+#write .home-view form { height: 60px; margin: 20px 0; }
+#write .home-view form input {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 10px 8px;
+  margin: 10px -10px 30px;
+  color: dimgray;
+  background-color: white;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, .25), 0 1px 1px rgba(255, 255, 255, .5);
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+#write .home-view form input:hover,
+#write .home-view form input:focus {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 1px 15px rgba(0, 0, 0, .5);
+  border: 1px solid rgb(240, 128, 128);
+  outline: none;
+}
+#write .home-view form .inset-text {
+  color: rgb(197, 106, 106);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+}
+#write .home-view form button {
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+  float: none;
+  color: rgb(240, 128, 128);
+  background-color: #f08080;
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, .5), 0 0 4px rgba(0, 0, 0, .25);
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+#write .home-view form button:hover {
+  margin-top: -2px;
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, .5), 0 2px 8px rgba(0, 0, 0, .5);
+}
+#write .home-view form button:disabled { opacity: .6; }
+
+#write .tell-error {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: rgb(197, 106, 106);
+  min-height: 20px;
+}
+
+#tells-list li, #tells-list .told, /* Keep a space between one tell and the next. */
+#tells-list li::after { content: " "; }
+
+#tells-list .info {
+  display: inline;
+  line-height: 1.6em;
+  padding: 4px 0;
+  margin: 0;
+  color: dimgray;
+}
+/* Keep a space between one tell and the next. */
+#tells-list li::after { content: " "; }
+
+#tells-list .info {
+  font-weight: 100;
+  opacity: .5;
+  display: none;
+}
+#tells-list li:hover .info { display: inline; }
+
+#read {
+  /* Dragging sideways reveals the text, so don't let touch scroll steal it. */
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pulley {
+  color: lightcoral;
+  text-align: center;
+  padding: 2px 10px;
+  cursor: pointer;
+}

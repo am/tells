@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tells",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  "previews": {},
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // The JSON API lives in the Worker; everything else is a static file.
+    "run_worker_first": ["/tells", "/tells/*", "/tells.json", "/last.json"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "tells",
+      "database_id": "d6b8e1a2-5fb6-4756-a298-341493cb0237",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": { "enabled": true }
+}

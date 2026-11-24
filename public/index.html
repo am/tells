@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tells</title>
+    <meta name="description" content="An endless exquisite corpse: continue the story from its last word.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/app.css">
+    <script src="https://use.typekit.net/wzk2btb.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="read">
+        <div class="home-view">
+          <div class="pulley" title="Drag sideways to read">&#8615;</div>
+          <div id="tells-list">
+            <ul class="unstyled inline"></ul>
+          </div>
+        </div>
+      </div>
+      <div id="write">
+        <div class="home-view">
+          <div class="tell-last-word"></div>
+          <form id="new-tell" name="new-tell" autocomplete="off">
+            <div class="row-fluid">
+              <input type="text" name="message" aria-label="Your sentence" maxlength="255" required>
+            </div>
+            <button class="span3" type="submit"><p class="inset-text">Tell &infin;</p></button>
+          </form>
+          <p class="tell-error" role="alert"></p>
+        </div>
+      </div>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
