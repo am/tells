@@ -1,0 +1,150 @@
+/* Compiled by hand from the old app/assets/stylesheets (scaffolds + home). */
+
+/* scaffolds */
+body { background-color: #fff; color: #333; font-family: verdana, arial, helvetica, sans-serif; font-size: 13px; line-height: 18px; }
+p, ol, ul, td { font-family: verdana, arial, helvetica, sans-serif; font-size: 13px; line-height: 18px; }
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color: #000; }
+
+/* home */
+body { background-color: lightgray; }
+
+body, p, div, input, button {
+  font-family: "adelle", sans-serif;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+h1 { color: dimgrey; }
+button, textarea { margin: 0; }
+
+#write .home-view { padding: 0 10px; }
+#write form { margin: 20px 0 0; }
+
+/* The input and the Tell button read as one control: box on top, button below. */
+#write .compose {
+  display: flex;
+  align-items: baseline;
+  gap: .3em;
+  margin: 0;
+  padding: 10px 8px;
+  background-color: white;
+  border: 1px solid gray;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, .25);
+  cursor: text;
+}
+#write .compose:focus-within { border-color: rgb(240, 128, 128); }
+
+/* The last word is part of the line you type on, but can't be edited. */
+#write .tell-last-word {
+  flex: none;
+  color: rgb(197, 106, 106);
+  user-select: none;
+  -webkit-user-select: none;
+}
+#write .tell-last-word:empty { display: none; }
+
+#write .compose input {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  color: dimgray;
+  outline: none;
+}
+
+#write form button {
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  color: rgb(240, 128, 128);
+  background-color: #f08080;
+  border: 1px solid gray;
+  border-radius: 0 0 4px 4px;
+  box-shadow: none;
+}
+#write form button:disabled { opacity: .6; }
+#write .inset-text {
+  color: rgb(197, 106, 106);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
+}
+
+#write .tell-error {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: rgb(197, 106, 106);
+  min-height: 20px;
+}
+
+#tells-list li, #tells-list .told, #tells-list .info {
+  display: inline;
+  line-height: 1.6em;
+  padding: 4px 0;
+  margin: 0;
+  color: dimgray;
+}
+/* Keep a space between one tell and the next. */
+#tells-list li::after { content: " "; }
+
+#tells-list .info {
+  font-weight: 100;
+  opacity: .5;
+  display: none;
+}
+#tells-list li:hover .info { display: inline; }
+
+.pulley {
+  display: block;
+  margin: 0 auto;
+  padding: 2px 10px;
+  border: none;
+  background: none;
+  color: lightcoral;
+  font-size: 20px;
+  letter-spacing: .1em;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+.pulley:hover, .pulley:focus-visible { text-decoration: underline; outline: none; }
+
+/* Bootstrap 2's fixed-width container overflows phones. */
+.container { width: auto; max-width: 940px; padding: 0 16px; }
+
+/* Everything sits in the middle of the page, horizontally and vertically. */
+html { height: 100%; }
+body {
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body > .container {
+  width: 100%;
+  max-width: 940px;
+  margin: 0;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+/* Justified so the story spans the same width as the input below it. */
+#tells-list { text-align: justify; text-align-last: center; hyphens: auto; }
+#write .home-view { padding: 0; }
+
+/* One even gap between the read button, the story, the form and any error. */
+body > .container { display: flex; flex-direction: column; gap: 24px; }
+#read, #write, #read .home-view, #write .home-view { display: contents; }
+.pulley, #tells-list, #tells-list ul, #write form, #write .tell-error { margin: 0; }
+#tells-list[hidden], .pulley[hidden], #write .tell-error:empty { display: none; }
+/* Cancel the story's half line-height so its gaps look the same as the others. */
+#tells-list { margin: -.3em 0; }

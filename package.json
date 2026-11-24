@@ -1,0 +1,13 @@
+{
+  "name": "tells",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler d1 migrations apply tells --local && wrangler dev",
+    "deploy": "wrangler d1 migrations apply tells --remote && wrangler deploy",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

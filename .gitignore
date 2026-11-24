@@ -21,3 +21,7 @@
 .idea
 
 *.DS_Store
+# Node / Wrangler
+node_modules
+.wrangler
+.dev.vars*
