@@ -120,3 +120,22 @@ button, textarea { margin: 0; }
 
 /* Bootstrap 2's fixed-width container overflows phones. */
 .container { width: auto; max-width: 940px; padding: 0 16px; }
+
+/* Everything sits in the middle of the page, horizontally and vertically. */
+html { height: 100%; }
+body {
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body > .container {
+  width: 100%;
+  max-width: 940px;
+  margin: 0;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+#tells-list { text-align: center; }
+#write .home-view { padding: 0; }
