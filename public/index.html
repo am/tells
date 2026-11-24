@@ -15,7 +15,7 @@
     <div class="container">
       <div id="read">
         <div class="home-view">
-          <div class="pulley" title="Click to pull out the whole story, or drag sideways over the text" role="button" tabindex="0">&#8615;</div>
+          <button type="button" class="pulley" aria-expanded="false">read</button>
           <div id="tells-list">
             <ul class="unstyled inline"></ul>
           </div>
@@ -23,12 +23,12 @@
       </div>
       <div id="write">
         <div class="home-view">
-          <div class="tell-last-word"></div>
           <form id="new-tell" name="new-tell" autocomplete="off">
-            <div class="row-fluid">
-              <input type="text" name="message" aria-label="Your sentence" maxlength="255" required>
-            </div>
-            <button class="span3" type="submit"><p class="inset-text">Tell &infin;</p></button>
+            <label class="compose">
+              <span class="tell-last-word"></span>
+              <input type="text" name="message" aria-label="Continue the story" maxlength="255" required>
+            </label>
+            <button type="submit"><span class="inset-text">Tell &infin;</span></button>
           </form>
           <p class="tell-error" role="alert"></p>
         </div>

@@ -19,53 +19,65 @@ body, p, div, input, button {
 h1 { color: dimgrey; }
 button, textarea { margin: 0; }
 
-.tell-last-word {
-  text-align: center;
-  display: block;
-  color: dimgray;
-}
-
 #write .home-view { padding: 0 10px; }
-#write .home-view form { height: 60px; margin: 20px 0; }
-#write .home-view form input {
-  display: block;
-  width: 100%;
-  height: auto;
+#write form { margin: 20px 0 0; }
+
+/* The input and the Tell button read as one control: box on top, button below. */
+#write .compose {
+  display: flex;
+  align-items: baseline;
+  gap: .3em;
+  margin: 0;
   padding: 10px 8px;
-  margin: 10px -10px 30px;
-  color: dimgray;
   background-color: white;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, .25), 0 1px 1px rgba(255, 255, 255, .5);
   border: 1px solid gray;
-  border-radius: 4px;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, .25);
+  cursor: text;
 }
-#write .home-view form input:hover,
-#write .home-view form input:focus {
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 1px 15px rgba(0, 0, 0, .5);
-  border: 1px solid rgb(240, 128, 128);
+#write .compose:focus-within { border-color: rgb(240, 128, 128); }
+
+/* The last word is part of the line you type on, but can't be edited. */
+#write .tell-last-word {
+  flex: none;
+  color: rgb(197, 106, 106);
+  user-select: none;
+  -webkit-user-select: none;
+}
+#write .tell-last-word:empty { display: none; }
+
+#write .compose input {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  color: dimgray;
   outline: none;
 }
-#write .home-view form .inset-text {
+
+#write form button {
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  color: rgb(240, 128, 128);
+  background-color: #f08080;
+  border: 1px solid gray;
+  border-radius: 0 0 4px 4px;
+  box-shadow: none;
+}
+#write form button:disabled { opacity: .6; }
+#write .inset-text {
   color: rgb(197, 106, 106);
   text-shadow: 0 1px 1px rgba(255, 255, 255, .5);
 }
-#write .home-view form button {
-  width: 50%;
-  height: 100%;
-  margin: 0 auto;
-  display: block;
-  float: none;
-  color: rgb(240, 128, 128);
-  background-color: #f08080;
-  box-shadow: inset 0 0 4px rgba(255, 255, 255, .5), 0 0 4px rgba(0, 0, 0, .25);
-  border: 1px solid gray;
-  border-radius: 4px;
-}
-#write .home-view form button:hover {
-  margin-top: -2px;
-  box-shadow: inset 0 0 4px rgba(255, 255, 255, .5), 0 2px 8px rgba(0, 0, 0, .5);
-}
-#write .home-view form button:disabled { opacity: .6; }
 
 #write .tell-error {
   font-size: 16px;
@@ -92,16 +104,19 @@ button, textarea { margin: 0; }
 }
 #tells-list li:hover .info { display: inline; }
 
-#read {
-  /* Dragging sideways reveals the text, so don't let touch scroll steal it. */
-  touch-action: pan-y;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
 .pulley {
-  color: lightcoral;
-  text-align: center;
+  display: block;
+  margin: 0 auto;
   padding: 2px 10px;
+  border: none;
+  background: none;
+  color: lightcoral;
+  font-size: 20px;
+  letter-spacing: .1em;
+  text-transform: lowercase;
   cursor: pointer;
 }
+.pulley:hover, .pulley:focus-visible { text-decoration: underline; outline: none; }
+
+/* Bootstrap 2's fixed-width container overflows phones. */
+.container { width: auto; max-width: 940px; padding: 0 16px; }

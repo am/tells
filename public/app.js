@@ -1,16 +1,16 @@
-// Tells: read the story by dragging sideways, then continue it from its last word.
-// A plain-JS port of the old Backbone views (read_view, write_view, tell_view).
+// Tells: an endless exquisite corpse. You see only the last word; continue
+// the story from it, then read the whole thing back.
 (() => {
   const list = document.querySelector("#tells-list > ul");
-  const read = document.getElementById("read");
+  const readButton = document.querySelector(".pulley");
   const form = document.getElementById("new-tell");
   const input = form.elements.message;
-  const button = form.querySelector("button");
+  const button = form.querySelector("button[type=submit]");
   const lastWordEl = document.querySelector(".tell-last-word");
   const errorEl = document.querySelector(".tell-error");
 
-  // Each message starts hidden. Dragging right reveals characters from the end
-  // of the newest tell backwards; dragging left hides them again.
+  // Each message starts hidden. Revealing goes character by character from
+  // the end of the newest tell backwards; hiding goes the other way.
   const hidden = [];
   const visible = [];
   const paragraphs = [];
@@ -38,61 +38,45 @@
       if (current === 0 && hidden[0].length === 0) return;
       if (hidden[current].length === 0) current--;
       visible[current].unshift(hidden[current].pop());
-    } else if (direction < 0) {
+    } else {
       if (current === visible.length - 1 && visible[current].length === 0) return;
       if (visible[current].length === 0) current++;
       hidden[current].push(visible[current].shift());
-    } else {
-      return;
     }
     paragraphs[current].textContent = visible[current].join("");
   }
 
-  // Clicking the arrow pulls the whole story out (or tucks it back in once it
-  // is all showing), a few characters per frame so it still feels pulled.
-  const pulley = document.querySelector(".pulley");
-  let pulling = null;
   const allShown = () => hidden.every((chars) => chars.length === 0);
   const allHidden = () => visible.every((chars) => chars.length === 0);
-  pulley.addEventListener("click", () => {
+
+  function updateReadButton() {
+    const open = hidden.length > 0 && allShown();
+    readButton.textContent = open ? "hide" : "read";
+    readButton.setAttribute("aria-expanded", String(open));
+    readButton.hidden = hidden.length === 0;
+  }
+
+  // Pull the story out (or tuck it back in), a few characters per frame so
+  // it takes about a second whatever its length.
+  let pulling = null;
+  function pull(direction) {
     if (pulling) cancelAnimationFrame(pulling);
-    const direction = allShown() ? -1 : 1;
     const done = direction > 0 ? allShown : allHidden;
-    const total = hidden.reduce((n, chars) => n + chars.length, 0) +
-      visible.reduce((n, chars) => n + chars.length, 0);
-    const perFrame = Math.max(1, Math.ceil(total / 60)); // about a second
+    const total = hidden.reduce((n, c) => n + c.length, 0) + visible.reduce((n, c) => n + c.length, 0);
+    const perFrame = Math.max(1, Math.ceil(total / 60));
     const tick = () => {
       for (let i = 0; i < perFrame && !done(); i++) step(direction);
       pulling = done() ? null : requestAnimationFrame(tick);
+      if (!pulling) updateReadButton();
     };
     tick();
-  });
-  pulley.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      pulley.click();
-    }
-  });
+  }
 
-  let lastX = null;
-  read.addEventListener("pointerdown", (e) => {
-    if (e.target.closest(".pulley")) return;
-    lastX = e.clientX;
-    read.setPointerCapture(e.pointerId);
-  });
-  read.addEventListener("pointermove", (e) => {
-    if (lastX === null) return;
-    if (pulling) { cancelAnimationFrame(pulling); pulling = null; }
-    step(Math.sign(e.clientX - lastX));
-    lastX = e.clientX;
-  });
-  const stop = () => { lastX = null; };
-  read.addEventListener("pointerup", stop);
-  read.addEventListener("pointercancel", stop);
+  readButton.addEventListener("click", () => pull(allShown() ? -1 : 1));
 
-  async function refreshLastWord() {
-    const res = await fetch("/last.json");
-    if (res.ok) lastWordEl.textContent = (await res.json()).word;
+  function setLastWord(message) {
+    const words = (message || "").split(" ").filter(Boolean);
+    lastWordEl.textContent = words.length ? words[words.length - 1] : "";
   }
 
   form.addEventListener("submit", async (e) => {
@@ -108,8 +92,9 @@
       const body = await res.json();
       if (res.ok) {
         addTell(body);
+        setLastWord(body.message);
         input.value = "";
-        refreshLastWord();
+        pull(1); // show the whole story with the new tell at the end
       } else if (body.message) {
         errorEl.textContent = `Message ${body.message.join(", ")}.`;
       } else {
@@ -124,7 +109,10 @@
 
   fetch("/tells")
     .then((res) => res.json())
-    .then((tells) => tells.forEach(addTell))
-    .catch(() => {});
-  refreshLastWord();
+    .then((tells) => {
+      tells.forEach(addTell);
+      if (tells.length) setLastWord(tells[tells.length - 1].message);
+      updateReadButton();
+    })
+    .catch(() => updateReadButton());
 })();
