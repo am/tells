@@ -48,13 +48,41 @@
     paragraphs[current].textContent = visible[current].join("");
   }
 
+  // Clicking the arrow pulls the whole story out (or tucks it back in once it
+  // is all showing), a few characters per frame so it still feels pulled.
+  const pulley = document.querySelector(".pulley");
+  let pulling = null;
+  const allShown = () => hidden.every((chars) => chars.length === 0);
+  const allHidden = () => visible.every((chars) => chars.length === 0);
+  pulley.addEventListener("click", () => {
+    if (pulling) cancelAnimationFrame(pulling);
+    const direction = allShown() ? -1 : 1;
+    const done = direction > 0 ? allShown : allHidden;
+    const total = hidden.reduce((n, chars) => n + chars.length, 0) +
+      visible.reduce((n, chars) => n + chars.length, 0);
+    const perFrame = Math.max(1, Math.ceil(total / 60)); // about a second
+    const tick = () => {
+      for (let i = 0; i < perFrame && !done(); i++) step(direction);
+      pulling = done() ? null : requestAnimationFrame(tick);
+    };
+    tick();
+  });
+  pulley.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      pulley.click();
+    }
+  });
+
   let lastX = null;
   read.addEventListener("pointerdown", (e) => {
+    if (e.target.closest(".pulley")) return;
     lastX = e.clientX;
     read.setPointerCapture(e.pointerId);
   });
   read.addEventListener("pointermove", (e) => {
     if (lastX === null) return;
+    if (pulling) { cancelAnimationFrame(pulling); pulling = null; }
     step(Math.sign(e.clientX - lastX));
     lastX = e.clientX;
   });
